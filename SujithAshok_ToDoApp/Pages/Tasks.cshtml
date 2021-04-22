@@ -4,7 +4,7 @@
     ViewData["Title"] = "Tasks";
 }
 
-@*<h1>Tasks</h1>
+<h1>Tasks</h1>
 
 <p>
    
@@ -16,16 +16,16 @@
                 User Email
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TaskView[0].Title)
+                Title
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Item[0].Done)
+                Done
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Item)
+        @foreach (var item in Model.TaskView)
         {
             <tr>
                 <td>
@@ -35,10 +35,14 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Done)
+                    @*@Html.DisplayFor(modelItem => item.Done)*@
+                    <form method="post">
+                        <input class="form-check-input" asp-for="TaskItem.Done" />
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </form>
                 </td>
                
             </tr>
         }
     </tbody>
-</table>*@
+</table>

@@ -17,6 +17,10 @@ namespace SujithAshok_ToDoApp.Pages
             _context = context;
         }
 
+        [BindProperty]
+        public Item TaskItem { get; set; }
+
+
         public ICollection<Models.Item> TaskView;
 
         public void OnGet()
