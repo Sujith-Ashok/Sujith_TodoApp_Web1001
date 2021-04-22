@@ -1,0 +1,44 @@
+﻿@page
+@model SujithAshok_ToDoApp.Pages.TasksModel
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+@*<h1>Tasks</h1>
+
+<p>
+   
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                User Email
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskView[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Done)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Item)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Done)
+                </td>
+               
+            </tr>
+        }
+    </tbody>
+</table>*@
