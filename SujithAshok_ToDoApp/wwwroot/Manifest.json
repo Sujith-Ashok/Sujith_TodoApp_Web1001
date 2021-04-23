@@ -1,0 +1,17 @@
+﻿{
+  "name": "Sujith Todo Website",
+  "short_name": "To-do Website",
+  "description": "WEB1001 Final Project Todo Website",
+  "start_url": "/",
+  "scope": "/",
+  "display": "minimal-ui",
+  "orientation": "natural",
+  "lang": "English",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "type": "images/png",
+      "src": "https://cdn.iconscout.com/icon/premium/png-512-thumb/task-list-1994638-1682288.png"
+    }
+  ]
+}
