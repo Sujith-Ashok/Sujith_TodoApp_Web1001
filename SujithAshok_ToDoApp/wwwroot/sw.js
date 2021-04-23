@@ -1,5 +1,6 @@
 ﻿const TodoCache = 'Sujith To-Do website cache';
-const TodoSecondaryCache = 'Sujith web application cache second';
+//const TodoSecondaryCache = 'Application cache second';
+
 let urlsToCache = [
     '/',
     '/css/site.css',
@@ -31,13 +32,14 @@ self.addEventListener('fetch', function (event) {
                     return response;
                 }
 
-                const newCache = fetch(event.request);
-                caches.open(TodoSecondaryCache).then((cache) => {
-                    cache.add(event.request);
-                });
+                //const newCache = fetch(event.request);
+                //caches.open(TodoSecondaryCache).then((cache) => {
+                //    cache.add(event.request);
+                //});
 
-                return newCache;
-                //return fetch(event.request);
+                //return newCache;
+
+                return fetch(event.request);
             }
             )
     );

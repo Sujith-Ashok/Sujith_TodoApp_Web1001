@@ -4,30 +4,39 @@
     ViewData["Title"] = "Tasks";
 }
 
-<h1>Tasks</h1>
+<div class="text-center">
+    <h1>Tasks</h1>
 
-<p>
-   
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                User Email
-            </th>
-            <th>
-                Title
-            </th>
-            <th>
-                Done
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+    <input id="OffBtn" type="button" value="Offline Mode">
 
-        @foreach (var item in Model.TaskView)
-        {
+    <p>Current connection status: <b id="status">unknown</b>.</p>
+
+    <div id="target"></div>
+
+
+</div>
+    <p>
+
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    User Email
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Done
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.TaskView)
+            {
             <tr>
                 <td>
                     @item.UserEmail
@@ -36,14 +45,28 @@
                     @item.Title
                 </td>
                 <td>
-                    @*@Html.DisplayFor(modelItem => item.Done)*@
-                    <form asp-action="post">
-                        <input type="hidden" name="ItemID" value="@item.itemID" />
-                        <button>Complete</button>
-                    </form>
+                    @Html.DisplayFor(modelItem => item.Done)
                 </td>
-               
+                
+                <td>
+                    
+                    <form asp-action="post">
+                        <input id="done" type="hidden" name="ItemID" value="@item.itemID" />
+                        @if (item.Done)
+                        {
+                            <button>Undo</button>
+                        }
+                        else
+                        {
+                            <button>Complete</button>
+                        }
+
+                    </form>
+                  
+
+                </td>
+
             </tr>
-        }
-    </tbody>
-</table>
+            }
+        </tbody>
+    </table>

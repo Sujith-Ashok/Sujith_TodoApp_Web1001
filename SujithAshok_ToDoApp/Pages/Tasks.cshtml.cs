@@ -21,7 +21,6 @@ namespace SujithAshok_ToDoApp.Pages
         [BindProperty]
         public Item TaskItem { get; set; }
 
-
         public ICollection<Models.Item> TaskView;
 
         public void OnGet()
@@ -31,12 +30,28 @@ namespace SujithAshok_ToDoApp.Pages
 
         public void OnPost(int? ItemID)
         {
-            Models.Item toDoComplete = _context.Items.FirstOrDefault(prod => prod.itemID == ItemID);
-            toDoComplete.Done = true;
-            _context.Update(toDoComplete);
-            _context.SaveChanges();
+            if (ItemID == 0)
+            {
+                TaskView = _context.Items.ToList();
+            }
+            else
+            {
+                Models.Item toDoComplete = _context.Items.FirstOrDefault(prod => prod.itemID == ItemID);
+                if (toDoComplete.Done)
+                {
+                    toDoComplete.Done = false;
+                }
+                else
+                {
+                    toDoComplete.Done = true;
+                }
 
-            TaskView = _context.Items.ToList();
+                _context.Update(toDoComplete);
+                _context.SaveChanges();
+
+                TaskView = _context.Items.ToList();
+
+            }
 
         }
 

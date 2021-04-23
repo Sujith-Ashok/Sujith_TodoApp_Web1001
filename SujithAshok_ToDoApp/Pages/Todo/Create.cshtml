@@ -1,11 +1,16 @@
 @page
 @model SujithAshok_ToDoApp.Pages.Todo.CreateModel
 
-@{
-    ViewData["Title"] = "Create";
-}
+@{ ViewData["Title"] = "Create"; }
 
 <h1>Create</h1>
+
+<input id="OffBtn" type="button" value="Offline Mode">
+<p>Current connection status: <b id="status">unknown</b>.</p>
+
+<div id="target"></div>
+
+
 
 <h4>Item</h4>
 <hr />
@@ -49,7 +54,7 @@
                 <span asp-validation-for="Item.DoneDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input id="createOff" type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
