@@ -25,20 +25,21 @@
         </tr>
     </thead>
     <tbody>
+
         @foreach (var item in Model.TaskView)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UserEmail)
+                    @item.UserEmail
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                    @item.Title
                 </td>
                 <td>
                     @*@Html.DisplayFor(modelItem => item.Done)*@
-                    <form method="post">
-                        <input class="form-check-input" asp-for="TaskItem.Done" />
-                        <input type="submit" value="Save" class="btn btn-primary" />
+                    <form asp-action="post">
+                        <input type="hidden" name="ItemID" value="@item.itemID" />
+                        <button>Complete</button>
                     </form>
                 </td>
                

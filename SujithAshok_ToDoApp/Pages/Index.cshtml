@@ -4,7 +4,119 @@
     ViewData["Title"] = "Home page";
 }
 
+
+@if (User.Identity.IsAuthenticated)
+{
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h5 class="display-4">Hello @User.Identity.Name! </h5>
+    <hr />
+    <br />
+    <p> <a href="/Todo/Create"> <input type="button" value="Click here to add Todo Item"> </a>  </p>
+    <p> <a href="/Tasks"> <input type="button" value="View All tasks"> </a>  </p>
 </div>
+
+    <br />
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Tasks completed today
+                </th>
+                <th>
+                    Tasks pending
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>
+                    @if (Model.Completed == null)
+                    {
+                        <p>  No Tasks Completed </p>
+                    }
+                    else
+                    {
+                        @foreach (var comp in Model.Completed)
+                        {
+
+
+                            <dl class="row">
+
+                                <dt class="col-sm-2">
+                                    Title:
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @comp.Title
+                                </dd>
+                                <dt class="col-sm-2">
+                                    Description:
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @comp.Description
+                                </dd>
+                            </dl>
+                        }
+                    }
+
+                </td>
+                <td>
+                    @if ((Model.Pending != null) && (!Model.Pending.Any()))
+                    {
+                        @foreach (var pend in Model.Pending)
+                        {
+                            <dl class="row">
+
+                                <dt class="col-sm-2">
+                                    Title:
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @pend.Title
+                                </dd>
+                                <dt class="col-sm-2">
+                                    Description:
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @pend.Description
+                                </dd>
+                            </dl>
+                        }
+
+
+                    }
+                    else
+                    {
+                        <p>  No Tasks pending for tomorrow </p>
+                    }
+
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+
+}
+else
+{
+    <div class="text-center">
+        <h1 class="display-4">Welcome Guest</h1>
+        <br />
+        <br />
+        <br />
+        <h4>Click on register to get started with this amazing to-do list Website</h4>
+        <br />
+        <br />
+        <h5>One place to manage all your daily tasks</h5>
+        <br />
+        <br />
+        <p> <a href="/Identity/Account/Register"> <input type="button" value="Register"> </a>  </p>
+
+
+    </div>
+
+}
+
